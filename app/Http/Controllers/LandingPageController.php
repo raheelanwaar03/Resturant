@@ -6,5 +6,11 @@ use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
-    //
+
+    public function landingPage()
+    {
+        return view('LandingPage.welcome');
+    }
+
+
 }
