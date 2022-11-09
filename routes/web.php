@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // Landing Page Routes
 
-Route::prefix('LandingPage')->group(function () {
+Route::prefix('/')->group(function () {
 
     Route::get('/',[LandingPageController::class,'landingPage'])->name('LandingPage');
 
