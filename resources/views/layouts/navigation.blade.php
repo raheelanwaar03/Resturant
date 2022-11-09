@@ -115,7 +115,7 @@
 				<li class="open-bag">
 					<div class="cart-food">
 						<div class="detail">
-							<img src="{{ asse('assets/images/cart-food1.jpg') }}" alt="img">
+							<img src="{{ asset('assets/images/cart-food1.jpg') }}" alt="img">
 							<div class="text">
 								<a href="#.">Blanched Garlic</a>
 								<p>1 x $35.00</p>
@@ -125,7 +125,7 @@
 					</div>
 					<div class="cart-food">
 						<div class="detail">
-							<img src="{{ asse('assets/images/cart-food2.jpg') }}" alt="img">
+							<img src="{{ asset('assets/images/cart-food2.jpg') }}" alt="img">
 							<div class="text">
 								<a href="#.">GREEN CHILE </a>
 								<p>2 x $40.00</p>
