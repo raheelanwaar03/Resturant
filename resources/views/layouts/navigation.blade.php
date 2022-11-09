@@ -1,92 +1,341 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a>
-                </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html>
+<!-- Mirrored from wahabali.com/work/pearl-demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Nov 2022 18:26:01 GMT -->
+<head>
+    <title>Welcome to Pearl</title>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+    <meta name="keywords" content="">
+	<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-                            <div class="ml-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
+	<link rel="icon" type="image/png" href="images/favicon-pearl.png">
 
-                    <x-slot name="content">
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+    <!--main file-->
+	<link href="css/pearl-restaurant.css" rel="stylesheet" type="text/css">
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
+    <!--Medical Guide Icons-->
+	<link href="fonts/pearl-icons.css" rel="stylesheet" type="text/css">
 
-            <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+	<!-- Default Color-->
+	<link href="css/default-color.css" rel="stylesheet" id="color"  type="text/css">
+
+    <!--bootstrap-->
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!--Dropmenu-->
+	<link href="css/dropmenu.css" rel="stylesheet" type="text/css">
+
+	<!--Sticky Header-->
+	<link href="css/sticky-header.css" rel="stylesheet" type="text/css">
+
+	<!--Sticky Countdown-->
+	<link href="css/countdown.css" rel="stylesheet" type="text/css">
+
+	<!--revolution-->
+	<link href="css/settings.css" rel="stylesheet" type="text/css">
+    <link href="css/extralayers.css" rel="stylesheet" type="text/css">
+
+    <!--Owl Carousel-->
+	<link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
+
+	<!--Date Picker-->
+	<link href="css/date-pick.css" rel="stylesheet" type="text/css">
+
+	<!--Form Dropdown-->
+	<link href="css/form-dropdown.css" rel="stylesheet" type="text/css">
+
+    <!-- Mobile Menu -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.mmenu.all.css" />
+
+	<!--PreLoader-->
+	<link href="css/loader.css" rel="stylesheet" type="text/css">
+
+    <!--switcher-->
+	<link href="css/switcher.css" rel="stylesheet" type="text/css">
+
+</head>
+  <body>
+
+
+	<!--Switcher-->
+	<div class="color-switcher" id="choose_color">
+      <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
+          <h5>STYLE SWITCHER</h5>
+      <div class="theme-colours">
+      <p>Choose Colour style</p>
+      <ul>
+        <li><a href="#." class="light-blue" id="light-blue"></a></li>
+		<li><a href="#." class="red" id="red"></a></li>
+        <li><a href="#." class="green" id="green"></a></li>
+		<li><a href="#." class="light-green" id="light-green"></a></li>
+        <li><a href="#." class="orange" id="orange"></a></li>
+
+
+      </ul>
+	  <span class="note"><strong>Note:</strong> you can add your own color just replace your color code in css file.</span>
+      </div>
+
+      <div class="choose-header">
+      	<p>Choose Header</p>
+        <a href="#." id="header-one">One</a>
+        <a href="#." id="header-two">Two</a>
+      </div>
+      <div class="choose-footer">
+      	<p>Choose Footer</p>
+		<a href="#." id="dark">Dark</a>
+		<a href="#." id="light">Light</a>
+      </div>
+
+      <div class="clr"></div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
 
-            <div class="mt-3 space-y-1">
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
-        </div>
-    </div>
-</nav>
+
+
+  <div id="wrap">
+
+   <!--Start PreLoader-->
+   <div id="preloader">
+		<div id="status">&nbsp;</div>
+		<div class="loader">
+			<h1>Loading...</h1>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!--End PreLoader-->
+
+
+   <!--Start Header-->
+	<div id="header-1">
+       <header class="header-two">
+		   <div class="container">
+	   		<a href="index.html"><img class="logo2" src="images/logo2.png" alt=""></a>
+			<a href="index.html"><img class="logo-dark" src="images/logo-dark.png" alt=""></a>
+
+			<div class="cont-right">
+
+            <nav class="menu-5 nav">
+            	<ul class="wtf-menu">
+                	<li class="select-item"><a href="#.">Home</a>
+						<ul class="submenu">
+							<li> <a href="index.html" class="select">Home 1</a> </li>
+							<li> <a href="index2.html">Home 2</a> </li>
+						</ul>
+					</li>
+
+					<li><a href="#.">Menu</a>
+						<ul class="submenu">
+							<li> <a href="menu.html">menu 1</a> </li>
+							<li> <a href="menu2.html">menu 2</a> </li>
+							<li> <a href="menu3.html">menu 3</a> </li>
+						</ul>
+					</li>
+
+					<li><a href="our-story.html">our story</a></li>
+
+
+					<li class="parent"><a href="#.">Blog</a>
+
+					<ul class="submenu">
+                        <li><a href="blog.html">blog 1</a></li>
+						<li><a href="blog2.html">blog 2</a></li>
+					</ul>
+
+					</li>
+
+
+					<li><a href="#.">contact us</a>
+
+						<ul class="submenu">
+							<li><a href="contact-us.html">contact-us 1</a></li>
+							<li><a href="contact-us2.html">contact-us 2</a></li>
+						</ul>
+
+					</li>
+
+					<li><a href="shop.html">online order</a></li>
+                </ul>
+            </nav>
+
+			<ul class="social-icons">
+				<li><a href="#."><i class="icon-facebook-1"></i></a></li>
+				<li><a href="#."><i class="icon-twitter-1"></i></a></li>
+				<li><a href="#."><i class="icon-google"></i></a></li>
+			</ul>
+
+			<ul class="shop-bag">
+				<li class="close-bag"><a class="cart-button"><i class="icon-icons163"></i> <span class="num">2</span></a></li>
+				<li class="open-bag">
+
+					<div class="cart-food">
+						<div class="detail">
+							<img src="images/cart-food1.jpg" alt="">
+							<div class="text">
+								<a href="#.">Blanched Garlic</a>
+								<p>1 x $35.00</p>
+							</div>
+						</div>
+						<a href="#." class="cross"><i class="icon-cancel2"></i></a>
+					</div>
+
+					<div class="cart-food">
+						<div class="detail">
+							<img src="images/cart-food2.jpg" alt="">
+							<div class="text">
+								<a href="#.">GREEN CHILE </a>
+								<p>2 x $40.00</p>
+							</div>
+						</div>
+						<a href="#." class="cross"><i class="icon-cancel2"></i></a>
+					</div>
+
+					<div class="sub-total">
+						<span>SUBTOTAL: <strong>$115.00</strong></span>
+						<div class="buttons">
+							<a href="#." class="view-cart">view cart</a>
+							<a href="#." class="check-out">Check Out</a>
+						</div>
+					</div>
+
+
+				</li>
+			</ul>
+
+			<ul class="get-touch">
+				<li class="contact-no"><a><i class="icon-telephone-receiver"></i> <span>+123 55 33 444</span></a></li>
+			</ul>
+
+			</div>
+		</div>
+
+       </header>
+	</div>
+
+   <!--End Header-->
+
+
+
+	<!--Start Header-->
+	<div id="header-2" style="display:none">
+       <header class="header">
+	   		<a href="index.html"><img class="logo" src="images/logo.png" alt=""></a>
+
+			<nav class="menu-5 nav">
+            	<ul class="wtf-menu">
+                	<li class="parent"><a class="select-item" href="#.">Home</a>
+
+					<ul class="submenu">
+                        <li> <a href="index.html" class="select">Home 1</a> </li>
+                        <li> <a href="index2.html">Home 2</a> </li>
+					</ul>
+
+					</li>
+
+					<li><a href="#.">Menu</a>
+
+					<ul class="submenu">
+                        <li> <a href="menu.html">menu 1</a> </li>
+                        <li> <a href="menu2.html">menu 2</a> </li>
+						<li> <a href="menu3.html">menu 3</a> </li>
+					</ul>
+
+					</li>
+					<li><a href="our-story.html">our story</a></li>
+
+
+					<li class="parent"><a href="#.">Blog</a>
+
+					<ul class="submenu">
+                        <li><a href="blog.html">blog 1</a></li>
+						<li><a href="blog2.html">blog 2</a></li>
+					</ul>
+
+					</li>
+
+
+					<li><a href="#.">contact us</a>
+
+					<ul class="submenu">
+                        <li><a href="contact-us.html">contact-us 1</a></li>
+						<li><a href="contact-us2.html">contact-us 2</a></li>
+					</ul>
+
+					</li>
+					<li><a href="shop.html">online order</a></li>
+                </ul>
+            </nav>
+
+
+			<ul class="get-touch">
+				<li class="contact-no"><a><i class="icon-telephone-receiver"></i> <span>+123 55 33 444 888</span></a></li>
+				<li class="book-table"><a href="#book-table" class="topLink"><span>book a table</span> <i class="icon-angle-right"></i></a></li>
+			</ul>
+
+
+       </header>
+	</div>
+
+   <!--End Header-->
+
+
+
+
+
+	<!-- Mobile Menu Start -->
+	<div class="container">
+    <div id="page">
+			<header class="header">
+				<a href="#menu"></a>
+
+			</header>
+
+			<nav id="menu">
+				<ul>
+					<li class="select"><a href="#.">Home</a>
+                    	<ul>
+							<li class="select"> <a href="index.html">Home Page 1</a> </li>
+							<li> <a href="index2.html">Home Page 2</a> </li>
+						</ul>
+                    </li>
+					<li><a href="#.">Fresh Menu</a>
+                    	<ul>
+                        	<li> <a href="menu.html">Menu 1</a> </li>
+							<li> <a href="menu2.html">Menu 2</a> </li>
+							<li> <a href="menu3.html">Menu 3</a> </li>
+                        </ul>
+                    </li>
+
+					<li><a href="our-story.html">Our Story</a></li>
+
+
+                    <li><a href="#.">Blog</a>
+                    	<ul>
+                        	<li> <a href="blog.html">Blog 1</a> </li>
+							<li> <a href="blog2.html">Blog 2</a> </li>
+                        </ul>
+                    </li>
+
+					<li><a href="#.">Contact Us</a>
+                    	<ul>
+                        	<li> <a href="contact-us.html">Contact-us 1</a> </li>
+							<li> <a href="contact-us2.html">Contact-us 2</a> </li>
+                        </ul>
+                    </li>
+
+					<li><a href="shop.html">Order Online</a></li>
+					<li><a href="#book-table">Book a Table</a></li>
+
+
+				</ul>
+
+
+			</nav>
+		</div>
+		</div>
+    <!-- Mobile Menu End -->
